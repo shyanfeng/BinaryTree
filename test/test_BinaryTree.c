@@ -32,7 +32,6 @@ void test_binary_tree_with_1_node(void){
  *		  5    -
  *
  */
- 
 void test_binary_tree_with_2_node_parent_and_left_child(void){
 	Node leftChild = {NULL, NULL, 5};
 	Node root = {&leftChild, NULL, 10};
@@ -49,7 +48,6 @@ void test_binary_tree_with_2_node_parent_and_left_child(void){
 	
 	binaryTreeTraverseInOrder(&root);
 }
-
 
 /*
  *			10
@@ -201,9 +199,9 @@ void test_binary_tree_with_3_node_parent_and_right_child_and_grand_childs(void){
  *    1   6  8  12
  */
 void test_binary_tree_with_3_node_parent_and_left_child_and_right_child_with_childs(void){
-	Node rightGrandChild = {NULL,NULL,12};
-	Node RLeftGrandChild = {NULL,NULL,8};
-	Node rightChild = {&rightGrandChild,&RLeftGrandChild,9};
+	Node rightGrandChild = {NULL, NULL, 12};
+	Node RLeftGrandChild = {NULL, NULL, 8};
+	Node rightChild = {&RLeftGrandChild, &rightGrandChild, 9};
 	Node LRightGrandChild = {NULL, NULL, 6};
 	Node leftGrandChild = {NULL, NULL, 1};
     Node leftChild = {&leftGrandChild, &LRightGrandChild, 5};
@@ -224,11 +222,11 @@ void test_binary_tree_with_3_node_parent_and_left_child_and_right_child_with_chi
     display_Expect(10);
 	stackPush_Expect(&stack, &root);
     stackPush_Expect(&stack, &rightChild);
-	display_Expect(12);
+	display_Expect(8);
 	stackPop_ExpectAndReturn(&stack, &rightChild);
 	display_Expect(9);
 	stackPush_Expect(&stack, &rightChild);
-	display_Expect(8);
+	display_Expect(12);
     stackPop_ExpectAndReturn(&stack, &rightChild);
 	stackPop_ExpectAndReturn(&stack, &root);
 	stackPop_ExpectAndReturn(&stack, NULL);
@@ -237,4 +235,56 @@ void test_binary_tree_with_3_node_parent_and_left_child_and_right_child_with_chi
 	binaryTreeTraverseInOrder(&root);
 }
 
+/*
+ *			10
+ *		   /  \
+ *		  5    -
+ *       / \
+ *      1   -
+ */
+void test_binaryTreePrintInOrder_with_left_child_and_grand_child(void){
+	Node leftGrandChild = {NULL, NULL, 1};
+    Node leftChild = {&leftGrandChild, NULL, 5};
+	Node root = {&leftChild, NULL, 10};
+	
+	printf("Start\n");
+	binaryTreePrintInOrder(&root);
+}
 
+/*
+ *			10
+ *		   /  \
+ *		  -    5    
+ *            / \
+ *           -   6
+ */
+void test_binaryTreePrintInOrder_with_right_child_and_grand_child(void){
+	Node RightGrandChild = {NULL, NULL, 6};
+    Node rightChild = {NULL, &RightGrandChild, 5};
+	Node root = {NULL, &rightChild, 10};
+	
+	printf("Start\n");
+	binaryTreePrintInOrder(&root);
+}
+ 
+ /*
+ *			10
+ *		   /  \
+ *	   	  5    9
+ *      / \   / \
+ *     1   6 8  12
+ */
+void test_binaryTreePrintInOrder_with_left_child_and_grand_child(void){
+	Node rightGrandChild = {NULL,NULL,12};
+	Node RLeftGrandChild = {NULL,NULL,8};
+	Node rightChild = {&RLeftGrandChild, &rightGrandChild,9};
+	Node LRightGrandChild = {NULL, NULL, 6};
+	Node leftGrandChild = {NULL, NULL, 1};
+    Node leftChild = {&leftGrandChild, &LRightGrandChild, 5};
+	Node root = {&leftChild,&rightChild, 10};
+
+	printf("Start\n");
+	binaryTreePrintInOrder(&root);
+
+}
+ 
