@@ -200,7 +200,7 @@ void test_binary_tree_with_3_node_parent_and_right_child_and_grand_childs(void){
  *      / \   / \
  *    1   6  8  12
  */
-void test_binary_tree_with_12_node_parent_and_left_child_and_grand_childs(void){
+void test_binary_tree_with_3_node_parent_and_left_child_and_right_child_with_childs(void){
 	Node rightGrandChild = {NULL,NULL,12};
 	Node RLeftGrandChild = {NULL,NULL,8};
 	Node rightChild = {&rightGrandChild,&RLeftGrandChild,9};
@@ -210,7 +210,7 @@ void test_binary_tree_with_12_node_parent_and_left_child_and_grand_childs(void){
 	Node root = {&leftChild,&rightChild, 10};
 	Stack stack;
 	
-	printf("Starts test_binary_tree_with_3_nodes_parent_and_left_child_and_grand_childs\n");
+	printf("Starts test_binary_tree_with_3_nodes_parent_and_left_child_and_right_child_with_childs\n");
 	stackNew_ExpectAndReturn(&stack);
 	stackPush_Expect(&stack, &root);
     stackPush_Expect(&stack, &leftChild);
